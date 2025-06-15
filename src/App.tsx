@@ -5,6 +5,7 @@ import Dashboard from './components/Dashboard';
 import TuningTab from './components/TuningTab';
 import HackingTab from './components/HackingTab';
 import BoostingTab from './components/BoostingTab';
+import WindowFrame from './components/WindowFrame';
 
 export type TabType = 'dashboard' | 'tuning' | 'hacking' | 'boosting';
 
@@ -27,16 +28,18 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
-      <div className="container mx-auto px-4 py-6">
-        <Header />
-        <div className="mt-8">
-          <TabNavigation activeTab={activeTab} onTabChange={setActiveTab} />
-          <div className="mt-6">
-            {renderActiveTab()}
+    <div className="min-h-screen bg-gradient-to-br from-slate-800 via-slate-900 to-black flex items-center justify-center p-4">
+      <WindowFrame>
+        <div className="h-full flex flex-col">
+          <Header />
+          <div className="flex-1 flex flex-col mt-4">
+            <TabNavigation activeTab={activeTab} onTabChange={setActiveTab} />
+            <div className="flex-1 mt-4 overflow-auto">
+              {renderActiveTab()}
+            </div>
           </div>
         </div>
-      </div>
+      </WindowFrame>
     </div>
   );
 }
